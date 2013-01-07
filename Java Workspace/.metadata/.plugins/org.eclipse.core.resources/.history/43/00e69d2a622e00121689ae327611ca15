@@ -1,0 +1,42 @@
+package fhtrier.digitalespiele.fhrogger.objects.frogs;
+
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
+
+import fhtrier.digitalespiele.fhrogger.GameObjects;
+
+@SuppressWarnings("unused")
+public class Frog extends GameObjects{
+	
+	public Frog(float posX, float posY, float spdX, float spdY, float scale){
+		super(posX, posY, spdX, spdY, scale);
+	}
+	
+	public void init(GameContainer container) throws SlickException {
+		
+		img = new Image("data/Frog.png");
+					
+	}
+
+	public void update(GameContainer container, int delta) throws SlickException {
+		float _delta = delta/1000.0F;
+				
+		posX += spdX*_delta;
+		posY += spdY*_delta;
+			
+	}
+	
+	public void render(GameContainer container, Graphics g) throws SlickException {
+		if (death == 3){
+			g.drawString("You lose!", 200, 300);
+		}else if(frognumber <=5){
+			img.draw(posX,posY,scale);
+		} else {
+			g.drawString("You won FHRogger! Congratz!", 200, 300);
+		}
+		
+	}
+}

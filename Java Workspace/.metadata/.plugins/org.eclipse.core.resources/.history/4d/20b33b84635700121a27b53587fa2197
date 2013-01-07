@@ -1,0 +1,71 @@
+package game.frogger.gamestates;
+
+import game.frogger.inout.Reset;
+
+import org.newdawn.slick.Color;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.BasicGameState;
+import org.newdawn.slick.state.StateBasedGame;
+
+public class GameStateMenu extends BasicGameState {
+		
+	private boolean didReset = false; // Benötigt für ResetStatusnachricht
+	private Image background;
+	private Music music = new Music("data/sounds/gamemusic.wav")
+	
+	public GameStateMenu(){
+		
+	}
+
+	@Override
+	public void init(GameContainer container, StateBasedGame state) throws SlickException {
+		background = new Image("data/settings/MenuBG.png");
+		
+		music.loop();
+		music.
+	}
+
+	@Override
+	public void render(GameContainer container, StateBasedGame state, Graphics g) throws SlickException {
+		background.draw(0,0);
+		
+		g.setColor(Color.white);
+		if(didReset)
+			g.drawString("The Game was reset!", 10, 700);
+	}
+
+	@Override
+	public void update(GameContainer container, StateBasedGame state, int delta) throws SlickException {
+		Input input = container.getInput();
+
+		if(input.isKeyPressed(Input.KEY_ENTER)){
+			state.enterState(GameStates.PlayingState);	
+		}
+		if(input.isKeyPressed(Input.KEY_S)){
+			state.enterState(GameStates.Selector);
+		}
+		if(input.isKeyPressed(Input.KEY_C)){
+			state.enterState(GameStates.Controls);
+		}
+		if(input.isKeyPressed(Input.KEY_T)){
+			state.enterState(GameStates.Credits);
+		}
+		if(input.isKeyPressed(Input.KEY_ESCAPE)){
+			System.exit(0);
+		}
+		if(input.isKeyPressed(Input.KEY_R)){
+			Reset.reset();
+			didReset = true;
+		}
+	}
+
+	@Override
+	public int getID() {
+		return GameStates.MenuState;
+	}
+}

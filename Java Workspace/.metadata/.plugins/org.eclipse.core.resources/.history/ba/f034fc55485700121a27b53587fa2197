@@ -1,0 +1,38 @@
+package game.frogger.inout;
+
+import java.io.File;
+
+public class FolderFiles {
+	
+	private String folder;
+	
+	public FolderFiles(String folder){
+		this.folder = folder;
+	}
+	
+	public String[] getContent(){
+		File dir = new File(this.folder);
+		int counter = 0;
+		String[] content = null;
+		for(int i=0;i<dir.length();i++){
+			if(!dir.isHidden()){
+				content[i] = dir.getName();
+			}
+		}
+		//String[] content = dir.list();
+		
+		return content;
+	}
+	
+	public int getNum(){
+		File dir = new File(this.folder);
+		int num = dir.list().length;
+		if(num>10)
+			num = 10;
+		
+		return num;
+	}
+
+}
+
+

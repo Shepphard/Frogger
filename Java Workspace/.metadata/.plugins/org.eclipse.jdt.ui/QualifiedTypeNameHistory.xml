@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="fhtrier.digitalespiele.fhrogger.frog.Frog"/>
+<fullyQualifiedTypeName name="fhtrier.digitalespiele.fhrogger.Frog"/>
+<fullyQualifiedTypeName name="fhtrier.digitalespiele.fhrogger.objects.enemytiles.Truck"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.geom.Shape"/>
+<fullyQualifiedTypeName name="fhtrier.digitalespiele.fhrogger.GameObjects"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.AppGameContainer"/>
+<fullyQualifiedTypeName name="game.frogger.gamestates.GameStateMenu"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.state.StateBasedGame"/>
+<fullyQualifiedTypeName name="game.frogger.objects.Enemies"/>
+<fullyQualifiedTypeName name="game.frogger.objects.frog.ControllableFrog"/>
+<fullyQualifiedTypeName name="game.frogger.objects.frog.Frog"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.state.BasicGameState"/>
+<fullyQualifiedTypeName name="java.io.FileWriter"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.gui.TextField"/>
+<fullyQualifiedTypeName name="game.frogger.objects.LaneSettings"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.TrueTypeFont"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.Font"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.Graphics"/>
+<fullyQualifiedTypeName name="game.frogger.inout.FolderFiles"/>
+<fullyQualifiedTypeName name="game.frogger.inout.ReadWrite"/>
+<fullyQualifiedTypeName name="game.frogger.selector.SelectorElements"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.UnicodeFont"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.Color"/>
+<fullyQualifiedTypeName name="game.frogger.inout.Reset"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.Image"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.Music"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.Sound"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.Input"/>
+</qualifiedTypeNameHistroy>

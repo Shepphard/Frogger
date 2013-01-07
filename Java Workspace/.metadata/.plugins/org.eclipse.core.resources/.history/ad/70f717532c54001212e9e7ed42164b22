@@ -1,0 +1,65 @@
+package game.frogger.objects;
+
+//import game.frogger.objects.frog.ControllableFrog;
+import game.frogger.objects.frog.Frog;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
+
+
+public class EnemyContainer {
+	
+	private List<GameObjects> enemyContainer;
+	
+	private int firstlane;
+	private int lastlane;
+	private Frog frog;
+	
+	private LaneSettings objects = new LaneSettings("objects"); // Liest objects pro lane aus objects.frog aus
+	private LaneSettings distance = new LaneSettings("distance"); // LIest distance zwischen elementen aus distance.frog aus
+	
+	public EnemyContainer(int firstlane, int lastlane, Frog frog){
+		this.firstlane = firstlane;
+		this.lastlane = lastlane;
+		this.frog = frog;
+	}
+	
+	public void init(GameContainer container) throws SlickException {
+		
+		Sound death = new Sound("data/sounds/death.wav");
+		
+		enemyContainer = new ArrayList<GameObjects>();
+		for(int i=firstlane; i<=lastlane; i++){
+			for(int j=0; j<objects.getData(i); j++){
+				enemyContainer.add(new Enemies(0+j*distance.getData(i), 0, i, "lane"+Integer.toString(i)));
+			}
+		}
+		for(GameObjects obj : enemyContainer){
+			obj.init(container);
+		}
+		
+	}
+	
+	public void update(GameContainer container, int delta) throws SlickException {
+		for(GameObjects obj : enemyContainer){
+			if(frog.collidesWith(obj)){
+				frog.reduceLive(1);
+				frog.reset();
+			}
+			obj.update(container, delta);
+		}
+	}
+	
+	public void render(GameContainer container, Graphics g) throws SlickException {
+		for(GameObjects obj : enemyContainer){
+			obj.render(container, g);
+		}
+	}
+	
+	
+}

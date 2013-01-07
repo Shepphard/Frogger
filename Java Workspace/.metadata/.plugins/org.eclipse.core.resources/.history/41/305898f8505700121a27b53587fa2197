@@ -1,0 +1,151 @@
+package game.frogger.gamestates;
+
+import game.frogger.inout.FolderFiles;
+import game.frogger.inout.ReadWrite;
+import game.frogger.selector.SelectorElements;
+
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Font;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.UnicodeFont;
+import org.newdawn.slick.gui.TextField;
+import org.newdawn.slick.state.BasicGameState;
+import org.newdawn.slick.state.StateBasedGame;
+
+@SuppressWarnings("unused")
+public class GameStateSelector extends BasicGameState {
+	
+	private boolean save = false;
+
+	private SelectorElements object = new SelectorElements(40,300,"objects");
+	private SelectorElements speed = new SelectorElements(240,300,"speed");
+	private SelectorElements distance = new SelectorElements(440,300,"distance");
+	private SelectorElements set = new SelectorElements(60,250,"set", false);
+	
+	private FolderFiles checkSets = new FolderFiles("data/sets");
+	private FolderFiles checkElements;
+	
+	private String[] sets = new String[10];
+	private boolean setGood = true;
+	private int setCounter = 0;
+	private String[] elements;
+	
+	private Image background;
+	private TextField setField;
+	
+	private final String[] ELEMENTS_PER_SET =  {"background.png", 
+												"final.png",
+												"final_occ.png",
+												"hopper.png",
+												"hopper_water.png",
+												"lane1.png",
+												"lane2.png",
+												"lane3.png",
+												"lane4.png",
+												"lane5.png",
+												"lane6.png",
+												"lane7.png",
+												"lane8.png",
+												"lane9.png",
+												"water.frog"
+											   };
+	
+	@Override
+	public void init(GameContainer container, StateBasedGame state) throws SlickException {
+		
+		object.init(container);
+		speed.init(container);
+		distance.init(container);
+		set.init(container);
+		
+		background = new Image("data/settings/SettingsBG.png");
+		
+		// CHECK IF SETS ARE ALLRIGHT
+		for(int i=1; i<=checkSets.getNum(); i++){
+			System.out.println(i);
+			checkElements = new FolderFiles("data/sets/set"+i);
+			elements = checkElements.getContent();
+			for(int j = 0; j<elements.length; j++){
+				//System.out.println("j: "+j);
+				//System.out.println(elements[j]+"="+ELEMENTS_PER_SET[j]);
+				if(elements.length == 0){
+					setGood = false;
+					break;
+				}
+				if(!elements[j].equals(ELEMENTS_PER_SET[j])){
+					setGood = false;
+					break;
+				}
+			}
+//			if(setGood == true){
+//				sets[setCounter]="set"+i;
+//				//System.out.println(sets[setCounter]);
+//				setCounter++;
+//			}
+		}	
+	}
+
+	@Override
+	public void render(GameContainer container, StateBasedGame state, Graphics g) throws SlickException {
+		
+		background.draw(0,0);
+		setCounter = 0;
+		String sett = "";
+		
+		for(int i = 0; i<sets.length; i++){
+			if(sets[i] != null){
+				setCounter++;
+			}
+		}
+		
+		g.drawString("There are "+setCounter+" valid sets in the data-folder. Select your set.", 40, 200);
+		for(int i = 0; i<setCounter; i++){
+			sett += sets[i]+", ";
+		}
+		g.drawString("Possible options: "+sett,40,220);
+		
+		set.render(container, state, g);
+		object.render(container, state, g);
+		speed.render(container, state, g);
+		distance.render(container, state, g);
+		
+		if(save){
+			if(speed.getError() == true || object.getError()==true || distance.getError() == true || set.getError() == true)
+				g.drawString("An Error has occured!", 300, 600);
+			else
+				g.drawString("Settings saved",300,600);
+		}
+	}
+
+	@Override
+	public void update(GameContainer container, StateBasedGame state, int delta)
+			throws SlickException {		
+		Input input = container.getInput();
+		
+		if(input.isKeyPressed(Input.KEY_A)){
+			state.enterState(GameStates.MenuState);
+		}
+		if(input.isKeyPressed(Input.KEY_S)){
+			object.save();
+			speed.save();
+			distance.save();
+			if(set.setCheck(checkSets.getNum())){
+				set.setError(false);
+				set.save();
+			}else
+				set.setError(true);
+			save = true;
+		}
+		
+	}
+
+	@Override
+	public int getID() {
+		return GameStates.Selector;
+	}
+
+}

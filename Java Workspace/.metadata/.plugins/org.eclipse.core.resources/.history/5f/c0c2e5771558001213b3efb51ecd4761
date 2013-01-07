@@ -1,0 +1,118 @@
+package game.frogger.objects;
+
+import game.frogger.objects.frog.Frog;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
+import org.newdawn.slick.state.StateBasedGame;
+
+@SuppressWarnings("unused")
+public class Ponds {
+
+	private List<GameObjects> pondContainer;
+	private List<GameObjects> closedPond;
+	private Frog frog;
+	private Sound crack;
+	private int hitPos;
+	
+	private Sound arrive;
+	
+	public Ponds(Frog frog){
+		this.frog = frog;
+	}
+	
+	public void initialisation(GameContainer container, boolean reinit) throws SlickException{
+		
+		if(reinit == true){
+			pondContainer.clear();
+			closedPond.clear();
+		}
+		
+		for(int i = 0; i<=4; i++){
+			pondContainer.add(new GameObjects(110+i*105, 40, 0, 0, "final", true));
+		}
+		for(int i = 0; i<=4; i++){
+			closedPond.add(new GameObjects(110+i*105, -40, 0, 0, "final_occ", false));
+		}
+		
+		for(GameObjects obj : pondContainer){
+			obj.init(container);
+		}
+		for(GameObjects obj : closedPond){
+			obj.init(container);
+		}
+	}
+	
+	public void init(GameContainer container) throws SlickException{
+		
+		arrive = new Sound("data/sounds/arrive.wav");
+		crack = new Sound("data/sounds/death.wav");
+		pondContainer = new ArrayList<GameObjects>();
+		closedPond = new ArrayList<GameObjects>();
+		
+		initialisation(container, false);
+		
+	}
+	
+	public void render(GameContainer container, Graphics g) throws SlickException {
+		
+		for(GameObjects obj : pondContainer){
+			obj.render(container, g);
+		}
+		for(GameObjects obj : closedPond){
+			obj.render(container, g);
+		}
+
+	}
+	
+	public void update(GameContainer container, int delta) throws SlickException {
+		
+			for(GameObjects obj : pondContainer){
+				if(frog.collidesWith(obj)){
+					if(obj.getCollType()==true){
+						arrive.play();
+						frog.upFrognum(1);
+						frog.setVulnerable(false);
+						frog.reset();
+						obj.setCollType(false);
+					}
+				}
+				obj.update(container, delta);
+			}
+			
+			for(GameObjects obj: pondContainer){
+				for(GameObjects obj2 : closedPond){
+					if(obj.getCollType()==false){
+						if(obj.posX == obj2.posX){
+							obj.posY = -40;
+							obj2.posY = 40;
+						}
+					}
+					obj2.update(container, delta);
+				}
+				obj.update(container, delta);
+			}
+			
+			for(GameObjects obj : closedPond){
+				if(frog.collidesWith(obj)){
+					if(obj.getCollType()==false){
+						frog.reduceLive(1);
+						frog.setVulnerable(false);
+						crack.play();
+						frog.reset();
+					}
+				}
+				obj.update(container, delta);
+			}
+
+			
+		
+
+	}
+	
+}

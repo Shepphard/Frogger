@@ -1,0 +1,47 @@
+{
+  "C:\\Program Files\\Java\\jre7\\lib\\rt.jar": {
+    "coordinate": "jre:jre:zip:call:1.0.0",
+    "location": "C:\\Program Files\\Java\\jre7\\lib\\rt.jar",
+    "status": "RESOLVED"
+  },
+  "Z:\\FH\\1. Semester\\Java Workspace\\FHRogger\\lib\\slick.jar": {
+    "location": "Z:\\FH\\1. Semester\\Java Workspace\\FHRogger\\lib\\slick.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027Z:\\FH\\1. Semester\\Java Workspace\\FHRogger\\lib\\slick.jar\u0027. Neither fingerprint \u002730dcc8bb0a2aa2d4bf1eacf1c5c7c82159f3abc9\u0027 nor symbolic name \u0027slick\u0027 are known."
+  },
+  "Z:\\FH\\1. Semester\\Java Workspace\\FHRogger\\src": {
+    "location": "Z:\\FH\\1. Semester\\Java Workspace\\FHRogger\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027Z:\\FH\\1. Semester\\Java Workspace\\FHRogger\\src\u0027. Skipped."
+  },
+  "/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar": {
+    "coordinate": "jre:jre:zip:call:1.0.0",
+    "location": "/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar",
+    "status": "RESOLVED"
+  },
+  "/Users/philippe/Desktop/Java Workspace/FHRogger/src": {
+    "location": "/Users/philippe/Desktop/Java Workspace/FHRogger/src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027/Users/philippe/Desktop/Java Workspace/FHRogger/src\u0027. Skipped."
+  },
+  "/Users/philippe/Desktop/Java Workspace/Frogger GameStates/lib/slick.jar": {
+    "location": "/Users/philippe/Desktop/Java Workspace/Frogger GameStates/lib/slick.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027/Users/philippe/Desktop/Java Workspace/Frogger GameStates/lib/slick.jar\u0027. Neither fingerprint \u002730dcc8bb0a2aa2d4bf1eacf1c5c7c82159f3abc9\u0027 nor symbolic name \u0027slick\u0027 are known."
+  },
+  "/Users/philippe/Desktop/Java Workspace/Frogger GameStates/src": {
+    "location": "/Users/philippe/Desktop/Java Workspace/Frogger GameStates/src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027/Users/philippe/Desktop/Java Workspace/Frogger GameStates/src\u0027. Skipped."
+  },
+  "/Users/Philippe/Desktop/Java Workspace/Frogger GameStates/lib/slick.jar": {
+    "location": "/Users/Philippe/Desktop/Java Workspace/Frogger GameStates/lib/slick.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027/Users/Philippe/Desktop/Java Workspace/Frogger GameStates/lib/slick.jar\u0027. Neither fingerprint \u002730dcc8bb0a2aa2d4bf1eacf1c5c7c82159f3abc9\u0027 nor symbolic name \u0027slick\u0027 are known."
+  },
+  "/Users/Philippe/Desktop/Java Workspace/Frogger GameStates/src": {
+    "location": "/Users/Philippe/Desktop/Java Workspace/Frogger GameStates/src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027/Users/Philippe/Desktop/Java Workspace/Frogger GameStates/src\u0027. Skipped."
+  }
+}
